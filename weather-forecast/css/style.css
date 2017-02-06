@@ -1,0 +1,94 @@
+body { 
+	background: url(../img/sun-bg.jpg) no-repeat center center fixed; 
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	padding-top: 20px;
+}
+
+div.wrapper {
+	background: #D8D8D8;
+	opacity: 0.6;
+	width: 30%;
+	margin: auto;
+	height: 500px;
+	border-radius: 10px; 
+	color: #000000;
+}
+
+h1:focus {
+	outline: none;
+}
+
+div.main-block {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-content: space-around;
+	justify-content: center;
+}
+
+div.container-temp {
+	margin-top: 50px;
+	display: flex;
+	flex-direction: row;
+}
+
+div.day, div.night {
+	height: 100px;
+	width: 100px;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	justify-content: center;
+}
+
+div.day {
+	background: #FFFFFF;
+	opacity: 0.9;
+}
+
+div.night {
+	background: #000000;
+	opacity: 0.9;
+}
+
+span#day-temp, span#night-temp {
+	font-size: 36px;
+}
+
+span#day-temp, span#day-heading {
+	color: #000000;
+}
+
+span#night-temp, span#night-heading {
+	color: #FFFFFF;
+}
+
+div.control-panel {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	margin-top: 50px;
+	height: 50px;
+	width: 200px;
+	background: #FFFFFF;
+	opacity: 0.9;
+	border-radius: 0px 0px 30px 30px; 
+}
+
+#previous-day, #next-day {
+	width: 100px;
+	
+} 
+
+.glyphicon {
+	font-size: 30px;
+	color: #636363;
+}
+
+a:hover > .glyphicon {
+	color: #000000;
+}

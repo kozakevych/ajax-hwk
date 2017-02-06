@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	
+	<title>Weather Forecast</title>
+	
+	<link rel="stylesheet" href="css/style.css">
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	
+</head>
+<body>
+	<!-- begin wrapper -->
+	<div class="wrapper">
+		<!-- begin main block -->
+		<div class="main-block">
+			<h1>
+				Weather for <span id="date-forecast">today</span>
+			</h1>
+
+			<!-- begin container-temp -->
+			<div class="container-temp">
+				
+				<div class="day">
+					<span id="day-temp">12</span>
+					<span id="day-heading">Day</span>
+				</div>
+				<div class="night">
+					<span id="night-temp">4</span>
+					<span id="night-heading">Night</span>
+				</div>
+				
+			</div>
+			<!-- end container-temp -->
+
+			
+
+			<!-- begin control-panel -->
+			<div class="control-panel">
+				<a href="#" id="previous-day" title="Previous day"><span class="glyphicon glyphicon-arrow-left"></span></a>
+				<a href="#" id="next-day" title="Next day"><span class="glyphicon glyphicon-arrow-right"></span></a>
+			</div>
+			<!-- end control-panel -->
+
+			<span id="clockbox"></span>
+			<span id="time"></span>
+		</div>
+		<!-- end main block -->
+	</div>
+	<!-- end wrapper -->
+	<script src="js/script.js"></script>
+</body>
+</html>
