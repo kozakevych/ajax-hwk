@@ -1,5 +1,5 @@
 body { 
-	background: url(../img/sun-bg.jpg) no-repeat center center fixed; 
+	background: url(../img/rain.gif) no-repeat center center fixed; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -7,10 +7,16 @@ body {
 	padding-top: 20px;
 }
 
+@font-face {
+    font-family: Daysfont;
+    src: url(../fonts/Days/Days.otf);
+}
+
 div.wrapper {
+	font-family: Daysfont, Times, serif;
 	background: #D8D8D8;
 	opacity: 0.6;
-	width: 30%;
+	width: 400px;
 	margin: auto;
 	height: 500px;
 	border-radius: 10px; 
@@ -30,7 +36,7 @@ div.main-block {
 }
 
 div.container-temp {
-	margin-top: 50px;
+	margin-top: 5px;
 	display: flex;
 	flex-direction: row;
 }
@@ -71,12 +77,7 @@ div.control-panel {
 	flex-direction: row;
 	justify-content: space-around;
 	align-items: center;
-	margin-top: 50px;
-	height: 50px;
-	width: 200px;
-	background: #FFFFFF;
-	opacity: 0.9;
-	border-radius: 0px 0px 30px 30px; 
+	margin-top: 10px;
 }
 
 #previous-day, #next-day {
@@ -84,11 +85,47 @@ div.control-panel {
 	
 } 
 
-.glyphicon {
+div.control-panel .glyphicon {
 	font-size: 30px;
-	color: #636363;
+	color: #BFBFBF;
 }
 
-a:hover > .glyphicon {
+div.wind-panel, div.humidity-panel, div.pressure-panel {
+	margin-top: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	background: white;
+	width: 100px;
+	height: 40px;
+}
+
+
+a#previous-day:hover {
+	background: #FFFFFF;
+}
+
+a#next-day:hover {
+	background: #000000;
+}
+
+a#next-day, a#previous-day {
+	background: #7F7F7F;
+	text-align: center;
+}
+
+a#previous-day {
+	border-radius: 30px 0px 0px 30px; 
+}
+
+a#next-day {
+	border-radius: 0px 30px 30px 0px; 
+}
+
+a#previous-day:hover > .glyphicon-arrow-left {
 	color: #000000;
+}
+
+a#next-day:hover > .glyphicon-arrow-right {
+	color: #FFFFFF;
 }

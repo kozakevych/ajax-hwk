@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 	
 	<title>Weather Forecast</title>
+	<link rel="icon" href="img/darkskyoriginal.ico">
 	
 	<link rel="stylesheet" href="css/style.css">
 	<!-- Latest compiled and minified CSS -->
@@ -16,9 +17,13 @@
 	<div class="wrapper">
 		<!-- begin main block -->
 		<div class="main-block">
-			<h1>
+			<h2>
 				Weather for <span id="date-forecast">today</span>
-			</h1>
+			</h2>
+
+			<h4>
+				Kiev
+			</h4>
 
 			<!-- begin container-temp -->
 			<div class="container-temp">
@@ -34,22 +39,45 @@
 				
 			</div>
 			<!-- end container-temp -->
+			
+			<div class="wind-panel">
+				<span class="glyphicon glyphicon-flag"></span>
+				<span class="wind-speed">213</span>
+				<span>m/s</span>
+				
+			</div>
 
+				
+			<div class="humidity-panel">
+			<span class="glyphicon glyphicon-tint"></span>
+				<span class="wind-speed">213</span>
+				<span>m/s</span>
+			</div>
+				
+			<div class="pressure-panel">
+			<span class="glyphicon glyphicon-scale"></span>
+				<span class="wind-speed">213</span>
+			</div>
 			
 
 			<!-- begin control-panel -->
 			<div class="control-panel">
-				<a href="#" id="previous-day" title="Previous day"><span class="glyphicon glyphicon-arrow-left"></span></a>
+				<a href="https://www.google.com" id="previous-day" title="Previous day"><span class="glyphicon glyphicon-arrow-left"></span></a>
 				<a href="#" id="next-day" title="Next day"><span class="glyphicon glyphicon-arrow-right"></span></a>
 			</div>
 			<!-- end control-panel -->
 
 			<span id="clockbox"></span>
 			<span id="time"></span>
+		<a href="https://darksky.net/poweredby/"><img src="https://darksky.net/dev/img/attribution/poweredby-oneline.png" alt="Powered by Dark Sky" width="200px" height="auto" /></a>
 		</div>
 		<!-- end main block -->
 	</div>
 	<!-- end wrapper -->
+	<script
+  src="https://code.jquery.com/jquery-3.1.1.js"
+  integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+  crossorigin="anonymous"></script>
 	<script src="js/script.js"></script>
 </body>
 </html>
