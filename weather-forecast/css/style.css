@@ -1,5 +1,5 @@
 body { 
-	background: url(../img/rain.gif) no-repeat center center fixed; 
+	background: url(../img/cloudy.gif) no-repeat center center fixed; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -15,16 +15,22 @@ body {
 div.wrapper {
 	font-family: Daysfont, Times, serif;
 	background: #D8D8D8;
-	opacity: 0.6;
+	opacity: 0.7;
 	width: 400px;
 	margin: auto;
-	height: 500px;
+	min-height: 500px;
 	border-radius: 10px; 
 	color: #000000;
 }
 
 h1:focus {
 	outline: none;
+}
+
+.degrees {
+	font-size: 12px;
+	position: relative;
+	bottom: 17px;
 }
 
 div.main-block {
@@ -101,31 +107,32 @@ div.wind-panel, div.humidity-panel, div.pressure-panel {
 }
 
 
-a#previous-day:hover {
+span#previous-day:hover {
 	background: #FFFFFF;
 }
 
-a#next-day:hover {
+span#next-day:hover {
 	background: #000000;
 }
 
-a#next-day, a#previous-day {
+span#next-day, span#previous-day {
 	background: #7F7F7F;
 	text-align: center;
+	cursor: pointer;
 }
 
-a#previous-day {
+span#previous-day {
 	border-radius: 30px 0px 0px 30px; 
 }
 
-a#next-day {
+span#next-day {
 	border-radius: 0px 30px 30px 0px; 
 }
 
-a#previous-day:hover > .glyphicon-arrow-left {
+span#previous-day:hover > .glyphicon-arrow-left {
 	color: #000000;
 }
 
-a#next-day:hover > .glyphicon-arrow-right {
+span#next-day:hover > .glyphicon-arrow-right {
 	color: #FFFFFF;
 }

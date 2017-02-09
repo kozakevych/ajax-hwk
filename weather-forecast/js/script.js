@@ -23,7 +23,7 @@ window.onload=function(){
 
 // getting geolocation and url
 
-/*
+
 var posLatit, posLongit, urlForecast;
 var secretKey = "884587fb9dfa5db46195850678819907";
 
@@ -31,11 +31,12 @@ navigator.geolocation.getCurrentPosition(function(position) {
   posLatit = position.coords.latitude;
   posLongit = position.coords.longitude;
 	urlForecast = "https://api.darksky.net/forecast/" + secretKey + "/" + posLatit +","+ posLongit;
+	newForecast(urlForecast);
 });
 
 //884587fb9dfa5db46195850678819907
 //https://api.darksky.net/forecast/[key]/[latitude],[longitude]
-
+/*
 if (urlForecast) {
 	$.ajax({
 		url: urlForecast,
@@ -51,7 +52,19 @@ if (urlForecast) {
 		console.log("complete");
 	});
 }
-
-
-
 */
+
+function newForecast (url) {
+	var req = new XMLHttpRequest();
+	req.onreadystatechange = function () {
+		if (req.readyState == 4) {
+			if (req.status == 200) {
+				alert("ok");
+			}
+		}
+	};
+	req.open("GET", url, true);
+	req.send();
+}
+
+
