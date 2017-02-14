@@ -65,7 +65,7 @@ h3#summary {
 }
 
 h4#error-message, h4#error-message2, div.additional {
-	width: 400px;
+	max-width: 400px;
 	font-weight: bold;
 	min-height: 60px;
 	border-radius: 10px;
@@ -199,9 +199,6 @@ span#next-day:hover > .glyphicon-arrow-right {
 
 @media all and (max-width: 600px) {
 	
-	body {
-		max-width: 575px; 
-	}
 	h4.error-message, h4.error-message2,div.wrapper,div.additional {
 		width: 80%;
 	}
