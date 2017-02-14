@@ -23,7 +23,7 @@ window.onload=function(){
 
 // getting geolocation and url
 
-//var km = 1.852 * miles;
+// km = 1.852 * miles;
 // 1 mile per hour (mph) = 1.609344 kilometer per hour (kph)
 // 1 mph = 0.44704 м/с
 
@@ -39,10 +39,27 @@ navigator.geolocation.getCurrentPosition(function(position) {
 });
 
 var jsDate = Date.now();
+var todayDate = jsDate;
+var dateField;
+
+
 var era = 86400000;
 
+function setDate () {
+
+}
+
 $("#previous-day").on("click", function(){
-	jsDate -= era;
+	jsDate -= era;	
+	var localDate = new Date(jsDate);
+	if (todayDate != jsDate) {
+		dateField = localDate.getDate() + "/" + (parseInt(localDate.getMonth()) + 1);
+		$("#date-forecast").text(dateField);
+	} else {
+		$("#date-forecast").text("today");
+	}
+
+
 	var jsDateUnix = Math.round(jsDate / 1000);
 	var urlForecastTime = urlForecast + "," + jsDateUnix;
 	newForecast(urlForecastTime);
@@ -55,7 +72,16 @@ i++;
 */
 
 $("#next-day").on("click", function(){
-	jsDate += era;
+	jsDate += era;	
+	var localDate = new Date(jsDate);
+	if (todayDate != jsDate) {
+		dateField = localDate.getDate() + "/" + (parseInt(localDate.getMonth()) + 1);
+		$("#date-forecast").text(dateField);
+	} else {
+		$("#date-forecast").text("today");
+	}
+
+
 	var jsDateUnix = Math.round(jsDate / 1000);
 	var urlForecastTime = urlForecast + "," + jsDateUnix;
 	newForecast(urlForecastTime);
@@ -73,8 +99,33 @@ function newForecast(urlForecast){
 		.done(function(data) {
 			console.log(data);
 			var icon = data.currently.icon;
+			var currentClass = $('body').attr('class');
+			var backgroundGif;
+			switch (icon) {
+				case "clear-day":
+				case "clear-night": backgroundGif = "clear";
+					break;
+				case "snow":
+				case "sleet":
+				case"fog": backgroundGif = "snow";
+					break;
+				case "cloudy":
+				case "partly-cloudy-day":
+				case "partly-cloudy-night": backgroundGif = "cloudy";
+					break;
+				case "rain": backgroundGif = "rain";
+					break;
+				default:
+					backgroundGif = "default";
+			}
+/*
+clear-day, clear-night, rain, 
+snow, sleet, wind, fog, 
+cloudy, partly-cloudy-day, 
+or partly-cloudy-night
+*/
 			var summary = data.currently.summary;
-			debugger;
+		
 			var dayTempF = data.daily.data[0].apparentTemperatureMax;
 			//var dayTempF = data.currently.temperature;
 			var dayTempC = Math.round((dayTempF - 32) * 5/9);
@@ -86,6 +137,8 @@ function newForecast(urlForecast){
 			var humidity = data.currently.humidity * 100;
 			var pressure = Math.round(data.currently.pressure * 0.75006375541921); // convert from milibars to millimeters of mercury
 
+			$("body").removeClass(currentClass).addClass(backgroundGif);
+	
 			$("#timezone").text(data.timezone);
 			$("#summary").text(summary);
 
