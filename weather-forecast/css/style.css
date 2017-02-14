@@ -198,13 +198,11 @@ span#next-day:hover > .glyphicon-arrow-right {
 
 
 @media all and (max-width: 600px) {
+	
 	body {
 		max-width: 575px; 
 	}
-	div.wrapper {
-		width: 80%;
-	}
-	div.additional {
+	h4.error-message, h4.error-message2,div.wrapper,div.additional {
 		width: 80%;
 	}
 }
