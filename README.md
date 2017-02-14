@@ -1,6 +1,7 @@
 # ajax-hwk
 Homework for Week 7 AJAX (Cursor Edu)
 
-# weather forecast
+## weather forecast
 Widget powered by [DarkSky](https://darksky.net/)
-Used bootstrap, jquery
+
+Demo here: https://kozakevych.github.io/ajax-hwk/weather-forecast 
