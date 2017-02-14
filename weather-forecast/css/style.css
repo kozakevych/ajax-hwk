@@ -1,5 +1,5 @@
 body { 
-	background: url(../img/cloudy.gif) no-repeat center center fixed; 
+	background: url(../img/default.gif) no-repeat center center fixed; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -18,13 +18,27 @@ div.wrapper {
 	opacity: 0.7;
 	width: 400px;
 	margin: auto;
-	min-height: 500px;
+	min-height: 430px;
 	border-radius: 10px; 
 	color: #000000;
+	margin-bottom: 10px;
 }
 
-h1:focus {
-	outline: none;
+h4#error-message, div.additional {
+	width: 400px;
+	font-weight: bold;
+	min-height: 60px;
+	border-radius: 10px;
+	background: #D8D8D8;
+	opacity: 0.7;
+	color: #000000;
+	margin: auto;
+	margin-bottom: 10px;
+}
+
+div.additional {
+	font-size: 16px;
+	min-height: 120px;
 }
 
 .degrees {
@@ -33,7 +47,7 @@ h1:focus {
 	bottom: 17px;
 }
 
-div.main-block {
+div.main-block, h4#error-message, div.additional {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -98,14 +112,18 @@ div.control-panel .glyphicon {
 
 div.wind-panel, div.humidity-panel, div.pressure-panel {
 	margin-top: 10px;
+	padding: 0px 10px;
 	display: flex;
 	align-items: center;
-	justify-content: space-around;
+	justify-content: flex-start;
 	background: white;
-	width: 100px;
+	width: 130px;
 	height: 40px;
 }
 
+div.additional-forecast span.glyphicon {
+	margin-right: 8px;
+}
 
 span#previous-day:hover {
 	background: #FFFFFF;
