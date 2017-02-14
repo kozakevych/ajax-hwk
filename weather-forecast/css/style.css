@@ -18,10 +18,14 @@ div.wrapper {
 	opacity: 0.7;
 	width: 400px;
 	margin: auto;
-	min-height: 430px;
+	min-height: 480px;
 	border-radius: 10px; 
 	color: #000000;
 	margin-bottom: 10px;
+}
+
+h3#summary {
+    margin-top: 10px;
 }
 
 h4#error-message, div.additional {

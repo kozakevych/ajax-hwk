@@ -39,7 +39,28 @@ navigator.geolocation.getCurrentPosition(function(position) {
 });
 
 var jsDate = Date.now();
-var date = new Date(jsDate);
+var era = 86400000;
+
+$("#previous-day").on("click", function(){
+	jsDate -= era;
+	var jsDateUnix = Math.round(jsDate / 1000);
+	var urlForecastTime = urlForecast + "," + jsDateUnix;
+	newForecast(urlForecastTime);
+});
+
+/*
+var i = 0;
+if (i > 2) return;
+i++;
+*/
+
+$("#next-day").on("click", function(){
+	jsDate += era;
+	var jsDateUnix = Math.round(jsDate / 1000);
+	var urlForecastTime = urlForecast + "," + jsDateUnix;
+	newForecast(urlForecastTime);
+});
+
 
 //884587fb9dfa5db46195850678819907
 //https://api.darksky.net/forecast/[key]/[latitude],[longitude]
@@ -51,10 +72,14 @@ function newForecast(urlForecast){
 		})
 		.done(function(data) {
 			console.log(data);
-			var dayTempF = data.currently.temperature;
+			var icon = data.currently.icon;
+			var summary = data.currently.summary;
+			debugger;
+			var dayTempF = data.daily.data[0].apparentTemperatureMax;
+			//var dayTempF = data.currently.temperature;
 			var dayTempC = Math.round((dayTempF - 32) * 5/9);
-
-			var nightTempF = data.currently.temperature;
+			var nightTempF = data.daily.data[0].apparentTemperatureMin;
+			//var nightTempF = data.currently.temperature;
 			var nightTempC = Math.round((nightTempF - 32) * 5/9);
 
 			var windSpeed = Math.round(data.currently.windSpeed * 0.44704); // convert from mph to m/s
@@ -62,6 +87,7 @@ function newForecast(urlForecast){
 			var pressure = Math.round(data.currently.pressure * 0.75006375541921); // convert from milibars to millimeters of mercury
 
 			$("#timezone").text(data.timezone);
+			$("#summary").text(summary);
 
 			$("#day-temp").text(dayTempC);
 			$("#night-temp").text(nightTempC);
