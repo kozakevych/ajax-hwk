@@ -88,7 +88,7 @@ div.additional {
 	bottom: 17px;
 }
 
-div.main-block, div.forecast-panel, h4#error-message,  h4#error-message2, div.additional {
+div.wrapper, div.wrapper>div.main-block>h2, div.main-block, div.forecast-panel, h4#error-message,  h4#error-message2, div.additional {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
