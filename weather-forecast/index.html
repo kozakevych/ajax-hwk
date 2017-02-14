@@ -15,7 +15,8 @@
 <body class="default">
 	
 	<!-- begin wrapper -->
-	<h4 id="error-message" style="display: none">Sorry, no forecast without location :&#41; Try again !</h4>
+	<h4 id="error-message" style="display: none">Sorry, DarkSky cannot provide forecast without location :&#41;</h4>
+	<h4 id="error-message2" style="display: none">Sorry, no forecast for this date :&#41;</h4>
 
 	<div class="wrapper" hidden>
 
@@ -26,44 +27,46 @@
 			<h2>
 				Weather for <span id="date-forecast">today</span>
 			</h2>
-
-			<h4 id="timezone">
-				Location
-			</h4>
-
-			<h3 id="summary">
-				Summary
-			</h3>
-
-			<!-- begin container-temp -->
-			<div class="container-temp">
-				
-				<div class="day">
-					<span id="day-temp"><span class="degrees">°С</span></span>
-					<span id="day-heading">Day</span>
-				</div>
-				<div class="night">
-					<span id="night-temp">-24<span class="degrees">°С</span></span>
-					<span id="night-heading">Night</span>
-				</div>
-				
-			</div>
-			<!-- end container-temp -->
-			<div class="additional-forecast">
-				<div class="wind-panel">
-					<span class="glyphicon glyphicon-flag"></span>
-					<span class="wind-speed">213 m/s</span>
-				</div>
-
+			<div class="forecast-panel">
 					
-				<div class="humidity-panel">
-				<span class="glyphicon glyphicon-tint"></span>
-					<span class="humidity"></span>
-				</div>
+				<h4 id="timezone">
+					Location
+				</h4>
+
+				<h3 id="summary">
+					Summary
+				</h3>
+
+				<!-- begin container-temp -->
+				<div class="container-temp">
 					
-				<div class="pressure-panel">
-				<span class="glyphicon glyphicon-scale"></span>
-					<span class="pressure">747</span>
+					<div class="day">
+						<span id="day-temp"></span>
+						<span id="day-heading">Day</span>
+					</div>
+					<div class="night">
+						<span id="night-temp"></span>
+						<span id="night-heading">Night</span>
+					</div>
+					
+				</div>
+				<!-- end container-temp -->
+				<div class="additional-forecast">
+					<div class="wind-panel">
+						<span class="glyphicon glyphicon-flag"></span>
+						<span class="wind-speed">213 m/s</span>
+					</div>
+
+						
+					<div class="humidity-panel">
+					<span class="glyphicon glyphicon-tint"></span>
+						<span class="humidity"></span>
+					</div>
+						
+					<div class="pressure-panel">
+					<span class="glyphicon glyphicon-scale"></span>
+						<span class="pressure">747</span>
+					</div>
 				</div>
 			</div>
 			

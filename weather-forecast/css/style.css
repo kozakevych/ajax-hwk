@@ -55,16 +55,16 @@ div.wrapper {
 	width: 400px;
 	margin: auto;
 	min-height: 480px;
+	margin-bottom: 10px;
 	border-radius: 10px; 
 	color: #000000;
-	margin-bottom: 10px;
 }
 
 h3#summary {
     margin-top: 10px;
 }
 
-h4#error-message, div.additional {
+h4#error-message, h4#error-message2, div.additional {
 	width: 400px;
 	font-weight: bold;
 	min-height: 60px;
@@ -74,6 +74,7 @@ h4#error-message, div.additional {
 	color: #000000;
 	margin: auto;
 	margin-bottom: 10px;
+	padding: 5px 10px;
 }
 
 div.additional {
@@ -87,7 +88,7 @@ div.additional {
 	bottom: 17px;
 }
 
-div.main-block, h4#error-message, div.additional {
+div.main-block, div.forecast-panel, h4#error-message,  h4#error-message2, div.additional {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -193,4 +194,17 @@ span#previous-day:hover > .glyphicon-arrow-left {
 
 span#next-day:hover > .glyphicon-arrow-right {
 	color: #FFFFFF;
+}
+
+
+@media all and (max-width: 600px) {
+	body {
+		max-width: 575px; 
+	}
+	div.wrapper {
+		width: 80%;
+	}
+	div.additional {
+		width: 80%;
+	}
 }

@@ -21,75 +21,77 @@ window.onload=function(){
 	setInterval(GetClock,1000);
 }
 
-// getting geolocation and url
 
 // km = 1.852 * miles;
 // 1 mile per hour (mph) = 1.609344 kilometer per hour (kph)
 // 1 mph = 0.44704 м/с
 
+//884587fb9dfa5db46195850678819907
+//https://api.darksky.net/forecast/[key]/[latitude],[longitude]
+
 var posLatit, posLongit, urlForecast;
 var secretKey = "884587fb9dfa5db46195850678819907";
-
-navigator.geolocation.getCurrentPosition(function(position) {
-  posLatit = position.coords.latitude;
-  posLongit = position.coords.longitude;
-
-	urlForecast = "https://api.darksky.net/forecast/" + secretKey + "/" + posLatit +","+ posLongit;
-	newForecast(urlForecast);
-});
-
 var jsDate = Date.now();
 var todayDate = jsDate;
 var dateField;
-
-
 var era = 86400000;
 
-function setDate () {
 
+// getting geolocation and url
+navigator.geolocation.getCurrentPosition(function(position) {
+  posLatit = position.coords.latitude;
+  posLongit = position.coords.longitude;
+	urlForecast = "https://api.darksky.net/forecast/" + secretKey + "/" + posLatit +","+ posLongit;
+	newForecast(urlForecast);
+}, 
+	function (error) { 
+	  if (error.code == error.PERMISSION_DENIED) {
+	  	$("#error-message").show();
+	  }
+});
+
+function setDate () {
+	// set field value
+	var localDate = new Date(jsDate);
+	
+	if (todayDate != jsDate) {
+		dateField = localDate.getDate() + "/" + (parseInt(localDate.getMonth()) + 1);
+		$("#date-forecast").text(dateField);
+	} else {
+		$("#date-forecast").text("today");
+	}
+
+	var dateDiff = (jsDate - todayDate) / 86400000;
+
+	if (dateDiff > 7) {
+		$("#error-message2").show();
+		$(".forecast-panel").hide();
+		$(".wrapper").css("min-height", "150px");
+		return;
+	} else {
+		$("#error-message2").hide();
+		$(".forecast-panel").show();
+		$(".wrapper").css("min-height", "480px");
+	}
+	var jsDateUnix = Math.round(jsDate / 1000);
+	var urlForecastTime = urlForecast + "," + jsDateUnix;
+	
+	// call forecast with time 
+	newForecast(urlForecastTime);
 }
+
 
 $("#previous-day").on("click", function(){
 	jsDate -= era;	
-	var localDate = new Date(jsDate);
-	if (todayDate != jsDate) {
-		dateField = localDate.getDate() + "/" + (parseInt(localDate.getMonth()) + 1);
-		$("#date-forecast").text(dateField);
-	} else {
-		$("#date-forecast").text("today");
-	}
-
-
-	var jsDateUnix = Math.round(jsDate / 1000);
-	var urlForecastTime = urlForecast + "," + jsDateUnix;
-	newForecast(urlForecastTime);
+	setDate();
 });
-
-/*
-var i = 0;
-if (i > 2) return;
-i++;
-*/
 
 $("#next-day").on("click", function(){
 	jsDate += era;	
-	var localDate = new Date(jsDate);
-	if (todayDate != jsDate) {
-		dateField = localDate.getDate() + "/" + (parseInt(localDate.getMonth()) + 1);
-		$("#date-forecast").text(dateField);
-	} else {
-		$("#date-forecast").text("today");
-	}
-
-
-	var jsDateUnix = Math.round(jsDate / 1000);
-	var urlForecastTime = urlForecast + "," + jsDateUnix;
-	newForecast(urlForecastTime);
+	setDate();
 });
 
 
-//884587fb9dfa5db46195850678819907
-//https://api.darksky.net/forecast/[key]/[latitude],[longitude]
 function newForecast(urlForecast){
 	if (urlForecast) {
 		$.ajax({
@@ -97,7 +99,7 @@ function newForecast(urlForecast){
 			dataType: 'jsonp'
 		})
 		.done(function(data) {
-			console.log(data);
+			//console.log(data);
 			var icon = data.currently.icon;
 			var currentClass = $('body').attr('class');
 			var backgroundGif;
@@ -118,12 +120,14 @@ function newForecast(urlForecast){
 				default:
 					backgroundGif = "default";
 			}
-/*
-clear-day, clear-night, rain, 
-snow, sleet, wind, fog, 
-cloudy, partly-cloudy-day, 
-or partly-cloudy-night
-*/
+			// list of available values
+			/*
+			clear-day, clear-night, rain, 
+			snow, sleet, wind, fog, 
+			cloudy, partly-cloudy-day, 
+			or partly-cloudy-night
+			*/
+
 			var summary = data.currently.summary;
 		
 			var dayTempF = data.daily.data[0].apparentTemperatureMax;
@@ -142,8 +146,8 @@ or partly-cloudy-night
 			$("#timezone").text(data.timezone);
 			$("#summary").text(summary);
 
-			$("#day-temp").text(dayTempC);
-			$("#night-temp").text(nightTempC);
+			$("#day-temp").html(dayTempC + "<span class='degrees'>°С</span>");
+			$("#night-temp").html(nightTempC + "<span class='degrees'>°С</span>");
 
 			$(".wind-speed").text(windSpeed + " m/s");
 			$(".humidity").text(humidity + "%");
@@ -157,8 +161,6 @@ or partly-cloudy-night
 			console.log("request complete");
 		});
 		$(".wrapper").show();
-	}	else {
-		$("#error-message").css("display", "block");
 	}
 }
 
